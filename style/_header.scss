@@ -1,0 +1,228 @@
+.header {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    .header__inner {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 15px;
+        padding-bottom: 48px;
+        align-items: center;
+    .logo__company {
+        display: flex;
+        background-color: #0b0b0b;
+        font-size: clamp(1.75rem, 1.114rem + 3.18vw, 3.5rem);
+        font-weight: 700;
+        }
+    }
+
+
+    .menu__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+            @media (max-width: 900px) {
+                flex-direction: column;
+                gap: 0;
+                margin: auto;
+                }
+        .menu__list-link {
+            font-size: clamp(0.563rem, 0.358rem + 1.02vw, 1.125rem);
+            font-weight: 500;
+            transition: 1s;
+                &:hover,&:active,&:focus {
+                    opacity: 0.7;
+                    color: #363434;
+                }
+            @media (max-width: 900px) {
+                display: block;
+                font-size: 30px;
+                line-height: 70px;
+                }
+        }
+    }
+//----------burger----------------
+    .menu__icon {
+    display: none;
+        @media (max-width: 900px) {
+            &.active {
+                span {
+                    transform: scale(0);
+                &:first-child {
+                    transform: rotate(-45deg);
+                    top: calc(50% - 1px);
+                }
+                &:last-child {
+                    transform: rotate(45deg);
+                    bottom: calc(50% - 1px);
+                }
+            }
+        }
+    display: block;
+    width: 30px;
+    height: 18px;
+    position: relative;
+    z-index: 5;
+    cursor: pointer;
+        span{
+            position: absolute;
+            top: calc(50% - 1px);
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #e6dada;
+            transition: all .2s;
+                &:first-child {
+                top: 0;
+            }
+                &:last-child {
+                top: auto;
+                bottom: 0;
+            }
+        }
+        }
+    }
+    .menu {
+        @media (max-width: 900px) {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            height: 100vh;
+            width: 100%;
+            background-color: #7e7b7b;
+            display: flex;
+            overflow: auto;
+            transition: all .2s;
+            }
+        &.active {
+        transform: translateY(100%);
+        }
+    }   
+//------end burger------------
+    .address-company {
+        max-width: 210px;
+    .address-company__title {
+        font-size: clamp(0.5rem, 0.318rem + 0.91vw, 1rem);
+        font-weight: 500;
+        } 
+    }
+
+//----------icon watsap-------
+    .whatsapp-button {
+        position: fixed;
+        right: 13px;
+        bottom: 90px;
+        transform: translate(-50%, -50%);
+        background: #25D366; /*цвет кнопки*/
+        border-radius: 50%;
+        width: 55px; /*ширина кнопки*/
+        height: 55px; /*высота кнопки*/
+        color: #fff;
+        text-align: center;
+        line-height: 53px; /*центровка иконки в кнопке*/
+        font-size:clamp(1.063rem, 0.653rem + 2.05vw, 2.188rem); /*размер иконки*/
+        z-index: 9999;
+            &::before,&::after {
+                content: " ";
+                background-image: url(../image/WhatsApp.svg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                display: block;
+                position: absolute;
+                border: 50%;
+                border: 1px solid #25D366; /*цвет анимированных волн от кнопки*/
+                left: -20px;
+                right: -20px;
+                top: -20px;
+                bottom: -20px;
+                border-radius: 50%;
+                animation: animate 1.8s linear infinite;
+                opacity: 0;
+                backface-visibility: hidden; 
+            }
+            @media (max-width : 800px) {  
+                    bottom: 100px; /*отступ кнопки снизу от экрана*/
+                    left: 70px; /*отступ кнопки слева от экрана(right - справа)*/
+                }
+                    .whatsapp-button:after{
+                    animation-delay: 1.5s;
+                    }
+    }
+    @keyframes animate  {
+        0%
+        {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        50%
+        {
+        opacity: 1;
+        }
+        100%
+        {
+        transform: scale(1.2);
+        opacity: 0;
+        }
+    }
+
+
+//-------phone
+
+.phone-button {
+    position: fixed;
+    right: 13px;
+    bottom: 0px;
+    transform: translate(-50%, -50%);
+    background: #d32525; /*цвет кнопки*/
+    border-radius: 50%;
+    width: 55px; /*ширина кнопки*/
+    height: 55px; /*высота кнопки*/
+    color: #fff;
+    text-align: center;
+    line-height: 53px; /*центровка иконки в кнопке*/
+    font-size: clamp(1.063rem, 0.653rem + 2.05vw, 2.188rem); /*размер иконки*/
+    z-index: 9999;
+        &::before,&::after {
+            content: " ";
+            background-image: url(../image/telphone.svg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: block;
+            position: absolute;
+            border: 50%;
+            border: 1px solid #dd0909; /*цвет анимированных волн от кнопки*/
+            left: -20px;
+            right: -20px;
+            top: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            animation: animate 1.8s linear infinite;
+            opacity: 0;
+            backface-visibility: hidden; 
+        }
+        @media (max-width : 800px) {   
+                bottom: 5px; /*отступ кнопки снизу от экрана*/
+                left: 70px; /*отступ кнопки слева от экрана(right - справа)*/
+            }
+                .phone-button:after{
+                animation-delay: 1.5s;
+                }
+                    }
+}
+@keyframes animate  {
+    0%
+    {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50%
+    {
+    opacity: 1;
+    }
+    100%
+    {
+    transform: scale(1.2);
+    opacity: 0;
+    }
+}
